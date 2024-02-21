@@ -20,6 +20,10 @@ class ProductAdmin(TranslationAdmin):
 class BrandAdmin(TranslationAdmin):
     pass
 
+@admin.register(Gender)
+class GenderAdmin(TranslationAdmin):
+    pass
+
 @admin.register(Color)
 class ColorAdmin(TranslationAdmin):
     pass

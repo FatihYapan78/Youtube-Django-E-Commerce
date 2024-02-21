@@ -17,6 +17,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+      .dropdown-toggle::after{
+        content: none;
+      }
+    </style>
     <!-- script
     ================================================== -->
     <script src="{% static 'js/modernizr.js' %}"></script>
@@ -94,6 +99,18 @@
 
 
     {% include 'partials/_header.html' %}
+
+    {% if messages %}
+    <div class="alert alert-danger" role="alert">
+      <ul class="messages" style="position: absolute; top: 100px; left: 0;">
+          {% for message in messages %}
+          <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>
+              {{ message }}
+          </li>
+          {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
     
     {% block content %}
         
@@ -108,5 +125,10 @@
 <script type="text/javascript" src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/plugins.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/script.js' %}"></script>
+
+{% block extrajs %}
+  
+{% endblock extrajs %}
+  
 </body>
 </html>

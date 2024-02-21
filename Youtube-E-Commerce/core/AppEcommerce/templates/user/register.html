@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+
+
+{% block content %}
+    <div class="container" style="padding: 250px 0;">
+        <h1 class="text-center">{% trans 'KAYIT OL' %}</h1>
+        <div class="row">
+            <form method="post" class="d-flex justify-content-center">
+                {% csrf_token %}
+                <div class="col-9">
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">{% trans 'Ad' %}</label>
+                        <input type="text" class="form-control" id="exampleFormControlInput1" name="name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">{% trans 'Soyad' %}</label>
+                        <input type="text" class="form-control" id="exampleFormControlInput1" name="surname">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">{% trans 'E-Posta Adresi' %}</label>
+                        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" name="email">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">{% trans 'Şifre' %}</label>
+                        <input type="password" class="form-control" id="exampleFormControlInput1" placeholder="*********" name="password">
+                    </div>
+                    <button type="submit" class="btn btn-primary d-block ms-auto">{% trans 'Kayıt Ol' %}</button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock content %}
+    
