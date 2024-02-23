@@ -8,8 +8,10 @@ from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("", index, name="index"),
-    path("profil/", Profil, name="profil"),
+    path("profil/", profil, name="profil"),
     path("category/", category, name="category"),
+    path("basket/", basket, name="basket"),
+    path("product-detail/<int:product_id>", product_detail, name="product-detail"),
 
     # Authenticated
     path("login/", Login, name="login"),

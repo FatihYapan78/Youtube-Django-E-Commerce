@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{% load humanize %}
+
+
+{% block content %}
+    <div class="container" style="padding: 150px 0;">
+        <div class="row">
+            <div class="col-5">
+                <div class="card" style="width: 100%;">
+                    <img src="{{ product.image.url }}" class="card-img-top" alt="...">
+                </div>
+            </div>
+            <div class="col-7">
+                <div class="card" style="width: 100%;">
+                    <div class="card-body">
+                      <h3 class="card-title">Marka: {{ product.brand }}</h3>
+                      <h5 class="card-text">Model: {{ product.model }}</h5>
+                      <h5 class="card-text">Fiyat: {{ product.price }}</h5>
+                      <p class="card-text">Açıklama: {{ product.description }}</p>
+                      <div class="d-flex justify-content-between">
+                        <a href="#" class="btn btn-primary">Favorilere Ekle</a>
+                        <form method="post">
+                            {% csrf_token %}
+                            <input type="hidden" value="{{ product.id }}" name="productid">
+                            <button type="submit" class="btn btn-primary">Sepete Ekle</button>
+                        </form>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+    

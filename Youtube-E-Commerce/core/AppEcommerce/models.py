@@ -95,3 +95,38 @@ class Product(models.Model):
     
     class Meta:
         verbose_name_plural = "Ürünler"
+
+class BasketProduct(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    quantity = models.IntegerField()
+
+    def __str__(self):
+        return self.product.model
+    
+    class Meta:
+        verbose_name_plural = "Sepetteki Ürünler"
+
+class Profil(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    phone_number = models.CharField(max_length=50, null=True, blank=True)
+    birtdate = models.DateField(null=True, blank=True)
+
+    def __str__(self):
+        return self.user.username
+    
+    class Meta:
+        verbose_name_plural = "Profiller"
+
+class Adress(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    adress = models.TextField(null=True, blank=True)
+    province = models.CharField(max_length=150,null=True, blank=True)
+    district = models.CharField(max_length=150,null=True, blank=True)
+    neighbourhood = models.CharField(max_length=150,null=True, blank=True)
+
+    def __str__(self):
+        return self.user.username
+    
+    class Meta:
+        verbose_name_plural = "Adresler"

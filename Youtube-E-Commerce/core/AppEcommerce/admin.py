@@ -16,6 +16,10 @@ class ProductAdmin(TranslationAdmin):
     #         'screen': ('modeltranslation/css/tabbed_translation_fields.css',),
     #     }
 
+admin.site.register(BasketProduct)
+admin.site.register(Profil)
+admin.site.register(Adress)
+
 @admin.register(Brand)
 class BrandAdmin(TranslationAdmin):
     pass

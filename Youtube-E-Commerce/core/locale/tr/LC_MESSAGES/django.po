@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-20 20:59+0300\n"
+"POT-Creation-Date: 2024-02-21 22:12+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,10 +18,122 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
+#: .\AppEcommerce\templates\category.html:16
+msgid "Markalar"
+msgstr ""
+
+#: .\AppEcommerce\templates\category.html:38
+msgid "Renkler"
+msgstr ""
+
+#: .\AppEcommerce\templates\category.html:58
+msgid "Kasa Şekilleri"
+msgstr ""
+
+#: .\AppEcommerce\templates\category.html:78
+msgid "Kayış Tipleri"
+msgstr ""
+
+#: .\AppEcommerce\templates\category.html:98
+msgid "Cam Özellikleri"
+msgstr ""
+
+#: .\AppEcommerce\templates\category.html:118
+msgid "Tarzlar"
+msgstr ""
+
+#: .\AppEcommerce\templates\category.html:138
+msgid "Mekanizmalar"
+msgstr ""
+
+#: .\AppEcommerce\templates\category.html:158
+msgid "Fiyat"
+msgstr ""
+
 #: .\AppEcommerce\templates\index.html:124
-msgid "Mobil Ürünler"
+msgid "Kadın Saatleri"
 msgstr ""
 
 #: .\AppEcommerce\templates\index.html:126
-msgid "Tüm Mobil Ürünler"
+msgid "Tüm Kadın Saatleri"
+msgstr ""
+
+#: .\AppEcommerce\templates\index.html:144
+#: .\AppEcommerce\templates\index.html:190
+msgid "Sepete Ekle"
+msgstr ""
+
+#: .\AppEcommerce\templates\index.html:172
+msgid "Erkek Saatleri"
+msgstr ""
+
+#: .\AppEcommerce\templates\index.html:174
+msgid "Tüm Erkek Saatleri"
+msgstr ""
+
+#: .\AppEcommerce\templates\partials\_header.html:61
+msgid "Anasayfa"
+msgstr ""
+
+#: .\AppEcommerce\templates\partials\_header.html:64
+msgid "Kadın Saat"
+msgstr ""
+
+#: .\AppEcommerce\templates\partials\_header.html:67
+msgid "Erkek Saat"
+msgstr ""
+
+#: .\AppEcommerce\templates\partials\_header.html:70
+msgid "Çocuk Saat"
+msgstr ""
+
+#: .\AppEcommerce\templates\partials\_header.html:73
+msgid "Akıllı Saat"
+msgstr ""
+
+#: .\AppEcommerce\templates\partials\_header.html:96
+msgid "Türkçe"
+msgstr ""
+
+#: .\AppEcommerce\templates\partials\_header.html:100
+msgid "İngilize"
+msgstr ""
+
+#: .\AppEcommerce\templates\partials\_header.html:161
+#: .\AppEcommerce\templates\user\login.html:9
+msgid "GİRİŞ YAP"
+msgstr ""
+
+#: .\AppEcommerce\templates\partials\_header.html:166
+msgid "ÜYE OL"
+msgstr ""
+
+#: .\AppEcommerce\templates\user\login.html:15
+#: .\AppEcommerce\templates\user\register.html:23
+msgid "E-Posta Adresi"
+msgstr ""
+
+#: .\AppEcommerce\templates\user\login.html:19
+#: .\AppEcommerce\templates\user\register.html:27
+msgid "Şifre"
+msgstr ""
+
+#: .\AppEcommerce\templates\user\login.html:22
+msgid "Giriş Yap"
+msgstr ""
+
+#: .\AppEcommerce\templates\user\register.html:9
+msgid "KAYIT OL"
+msgstr ""
+
+#: .\AppEcommerce\templates\user\register.html:15
+msgid "Ad"
+msgstr ""
+
+#: .\AppEcommerce\templates\user\register.html:19
+msgid "Soyad"
+msgstr ""
+
+#: .\AppEcommerce\templates\user\register.html:30
+msgid "Kayıt Ol"
 msgstr ""

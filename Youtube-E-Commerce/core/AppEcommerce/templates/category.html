@@ -187,14 +187,47 @@
                               <p class="card-text text-dark">{{ product.model }}</p>
                               <p class="card-text text-dark">{{ product.price|intcomma }} TL</p>
                               <div class="d-flex justify-content-between">
-                                <a href="#" class="btn btn-primary">Detaya Git</a>
-                                <a href="#" class="btn btn-primary">Sepete Ekle</a>
+                                <a href="{% url 'product-detail' product.id %}" class="btn btn-primary">Detaya Git</a>
+                                <form method="post">
+                                    {% csrf_token %}
+                                    <input type="hidden" value="{{ product.id }}" name="product_id">
+                                    <button type="submit" class="btn btn-primary">Sepete Ekle</button>
+                                </form>
                               </div>
                             </div>
                           </div>
                     </div>
                     {% endfor %}
                         
+                </div>
+                <div class="row">
+                    <!-- PAGİNATİON -->
+                <nav aria-label="..." class="d-flex justify-content-center mt-5">
+                    <ul class="pagination">
+                        
+                        {% if products.has_previous %}
+                        <li class="page-item">
+                          <a class="page-link" href="?page={{ products.previous_page_number }}">{% trans 'Geri' %}</a>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="?page={{ products.number|add:'-1' }}">{{ products.number|add:'-1' }}</a></li>
+                            
+                        {% endif %}
+                            
+
+                      <li class="page-item active" aria-current="page">
+                        <a class="page-link" href="?page={{ products.number }}">{{ products.number }}</a>
+                      </li>
+                      
+                      {% if products.has_next %}
+                      <li class="page-item"><a class="page-link" href="?page={{ products.number|add:'1' }}">{{ products.number|add:'1' }}</a></li>
+                      <li class="page-item">
+                        <a class="page-link" href="?page={{ products.next_page_number }}">{% trans 'İleri' %}</a>
+                      </li>
+                        
+                      {% endif %}
+                        
+                    </ul>
+                  </nav>
                 </div>
             </div>
         </div>

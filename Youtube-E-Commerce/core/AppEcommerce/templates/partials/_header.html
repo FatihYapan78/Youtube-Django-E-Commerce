@@ -58,13 +58,25 @@
         <div class="offcanvas-body">
           <ul id="navbar" class="navbar-nav text-uppercase justify-content-end align-items-center flex-grow-1 pe-3">
             <li class="nav-item">
-              <a class="nav-link me-4 active" href="#billboard">{% trans 'Anasayfa' %}</a>
+              <a class="nav-link me-4 
+              {% if request.path == 'index' %}
+              active
+              {% endif %}
+                " href="#billboard">{% trans 'Anasayfa' %}</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link me-4" href="#company-services">{% trans 'Kadın Saat' %}</a>
+              <a class="nav-link me-4 
+              {% if request.GET.urlencode == 'cinsiyet=2' %}
+              active
+              {% endif %}
+              " href="#company-services">{% trans 'Kadın Saat' %}</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link me-4" href="#mobile-products">{% trans 'Erkek Saat' %}</a>
+              <a class="nav-link me-4
+              {% if request.GET.urlencode == 'cinsiyet=1' %}
+              active
+              {% endif %}
+              " href="#mobile-products">{% trans 'Erkek Saat' %}</a>
             </li>
             <li class="nav-item">
               <a class="nav-link me-4" href="#smart-watches">{% trans 'Çocuk Saat' %}</a>
@@ -73,16 +85,34 @@
               <a class="nav-link me-4" href="#yearly-sale">{% trans 'Akıllı Saat' %}</a>
             </li>
             <li class="nav-item dropdown">
-              <a class="nav-link me-4 dropdown-toggle link-dark" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Diller</a>
-              <ul class="dropdown-menu">
-                <li>
-                  <a href="{% url 'set-language' 'tr' %}">TR</a>
-                </li>
-                <li>
-                  <a href="{% url 'set-language' 'en' %}">EN</a>
-                </li>
+              <a class="dropdown-toggle" id="Dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <i class="
+                  
+                  {% if request.path|slice:'1:3' == 'en' %}
+                    flag-united-kingdom
+                  {% else %}
+                    flag-turkey
+                  {% endif %}
+                    
+                  flag m-0">
+                </i>
+              </a>
+              {% if request.path|slice:'1:3' == 'en' %}
+                    EN
+                  {% else %}
+                    TR
+                  {% endif %}
+          
+              <ul class="dropdown-menu" aria-labelledby="Dropdown">
+                  <li>
+                      <a class="dropdown-item" href="{% url 'set-language' 'tr' %}"><i class="flag-turkey flag"></i>{% trans 'Türkçe' %} <i class="fa fa-check text-success ms-2"></i></a>
+                  </li>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li>
+                      <a class="dropdown-item" href="{% url 'set-language' 'en' %}"><i class="flag-united-kingdom flag"></i>{% trans 'İngilizce' %}</a>
+                  </li>
               </ul>
-            </li>
+          </li>
             
             {% if request.user.is_authenticated %}
             <li class="nav-item">
@@ -114,7 +144,10 @@
                   </li>
                   
                   <li>
-                    <a href="cart.html">
+                    <a href="{% url 'basket' %}" class="position-relative">
+                      <span class="position-absolute top-25 start-100 translate-middle badge rounded-pill bg-dark">
+                        {{ productquantity|length }}
+                      </span>
                       <svg class="cart">
                         <use xlink:href="#cart"></use>
                       </svg>
@@ -149,3 +182,4 @@
     </div>
   </nav>
 </header>
+
