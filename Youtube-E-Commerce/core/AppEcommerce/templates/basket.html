@@ -35,11 +35,22 @@
                             <td>{{ product.product.brand }}</td>
                             <td>{{ product.product.model }}</td>
                             <td>{{ product.product.price }}</td>
-                            <td>{{ product.quantity }}</td>
                             <form method="post">
-                                {% csrf_token %}
-                                <input type="hidden" value="{{ product.id }}" name="product_id">
-                                <td><button type="submit" class="btn btn-close btn-danger"></button></td>
+                            {% csrf_token %}
+                            <input type="hidden" value="{{ product.id }}" name="product_id">
+                            <td>
+                                <button type="submit" class="btn btn-primary me-1" name="submit" value="minus"
+                                
+                                {% if product.quantity == 1 %}
+                                    disabled
+                                {% endif %}
+                                    
+                                >-</button>
+                                {{ product.quantity }}
+                                <button type="submit" class="btn btn-primary ms-1" name="submit" value="plus">+</button>
+                            </td>
+                                
+                                <td><button type="submit" name="submit" value="btndel" class="btn btn-close btn-danger"></button></td>
                             </form>
                         </tr>
                     {% endfor %}
@@ -76,4 +87,3 @@
         </div>
     </div>
 {% endblock content %}
-    

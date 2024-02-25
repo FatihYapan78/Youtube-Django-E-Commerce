@@ -130,3 +130,27 @@ class Adress(models.Model):
     
     class Meta:
         verbose_name_plural = "Adresler"
+
+class Favorite(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.user.username
+    
+    class Meta:
+        verbose_name_plural = "Favoriler"
+
+class Comment(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    first_name = models.CharField(max_length=150, null=True)
+    last_name = models.CharField(max_length=150, null=True)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, null=True)
+    create_date = models.DateTimeField(auto_now_add=True)
+    comment = models.TextField(max_length=500)
+
+    def __str__(self):
+        return self.user.username
+    
+    class Meta:
+        verbose_name_plural = "Yorumlar"

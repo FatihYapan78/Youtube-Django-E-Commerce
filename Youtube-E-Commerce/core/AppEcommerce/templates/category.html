@@ -21,7 +21,7 @@
                                 
                                 {% for brand in brands %}
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="{{ brand.id }}" id="flexCheckDefault" name="marka">
+                                    <input class="form-check-input" type="checkbox" value="{{ brand.brand }}" id="flexCheckDefault" name="marka">
                                     <label class="form-check-label" for="flexCheckDefault">
                                     {{ brand.brand }}
                                     </label>
@@ -42,7 +42,7 @@
                             <div class="accordion-body">
                                 {% for color in colors %}
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="{{ color.id }}" name="renk" id="flexCheckDefault">
+                                    <input class="form-check-input" type="checkbox" value="{{ color.color }}" name="renk" id="flexCheckDefault">
                                     <label class="form-check-label" for="flexCheckDefault">
                                     {{ color.color }}
                                     </label>
@@ -62,7 +62,7 @@
                             <div class="accordion-body">
                                 {% for case_shape in case_shapes %}
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="{{ case_shape.id }}" name="kasa_sekli" id="flexCheckDefault">
+                                    <input class="form-check-input" type="checkbox" value="{{ case_shape.case_shape }}" name="kasa_sekli" id="flexCheckDefault">
                                     <label class="form-check-label" for="flexCheckDefault">
                                     {{ case_shape.case_shape }}
                                     </label>
@@ -82,7 +82,7 @@
                             <div class="accordion-body">
                                 {% for strap_type in strap_types %}
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="{{ strap_type.id }}" name="kayis_tipi" id="flexCheckDefault">
+                                    <input class="form-check-input" type="checkbox" value="{{ strap_type.strap_type }}" name="kayis_tipi" id="flexCheckDefault">
                                     <label class="form-check-label" for="flexCheckDefault">
                                     {{ strap_type.strap_type }}
                                     </label>
@@ -102,7 +102,7 @@
                             <div class="accordion-body">
                                 {% for glass_feature in glass_features %}
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="{{ glass_feature.id }}"  name="cam_ozellik" id="flexCheckDefault">
+                                    <input class="form-check-input" type="checkbox" value="{{ glass_feature.glass_feature }}"  name="cam_ozellik" id="flexCheckDefault">
                                     <label class="form-check-label" for="flexCheckDefault">
                                     {{ glass_feature.glass_feature }}
                                     </label>
@@ -122,7 +122,7 @@
                             <div class="accordion-body">
                                 {% for style in styles %}
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="{{ style.id }}" name="tarz" id="flexCheckDefault">
+                                    <input class="form-check-input" type="checkbox" value="{{ style.style }}" name="tarz" id="flexCheckDefault">
                                     <label class="form-check-label" for="flexCheckDefault">
                                     {{ style.style }}
                                     </label>
@@ -142,7 +142,7 @@
                             <div class="accordion-body">
                                 {% for mechanism in mechanisms %}
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="{{ mechanism.id }}" name="mekanizma" id="flexCheckDefault">
+                                    <input class="form-check-input" type="checkbox" value="{{ mechanism.mechanism }}" name="mekanizma" id="flexCheckDefault">
                                     <label class="form-check-label" for="flexCheckDefault">
                                     {{ mechanism.mechanism }}
                                     </label>
@@ -180,7 +180,7 @@
                     
                     {% for product in products %}
                     <div class="col-4">
-                        <div class="card" style="width: 100%;">
+                        <div class="card position-relative" style="width: 100%;">
                             <img src="{{ product.image.url }}" class="card-img-top" alt="...">
                             <div class="card-body">
                               <h5 class="card-title">{{ product.brand }}</h5>
@@ -191,7 +191,26 @@
                                 <form method="post">
                                     {% csrf_token %}
                                     <input type="hidden" value="{{ product.id }}" name="product_id">
-                                    <button type="submit" class="btn btn-primary">Sepete Ekle</button>
+                                    <button type="submit" class="position-absolute top-0 end-0" name="submit" value="btnfavori"><i class="
+                                        
+                                        
+                                        {% if favori_products %}
+
+                                            {% for favori_product in favori_products %}
+                                                
+                                                {% if favori_product.product == product %}
+                                                    fa-solid fa-heart
+                                                {% else %}
+                                                    fa-regular fa-heart
+                                                {% endif %}
+                                                    
+                                            {% endfor %}
+                                        {% else %}
+                                        fa-regular fa-heart
+                                        {% endif %}
+                                            
+                                          fs-5"></i></button>
+                                    <button type="submit" class="btn btn-primary" name="submit" value="btnbasket">Sepete Ekle</button>
                                 </form>
                               </div>
                             </div>

@@ -19,6 +19,8 @@ class ProductAdmin(TranslationAdmin):
 admin.site.register(BasketProduct)
 admin.site.register(Profil)
 admin.site.register(Adress)
+admin.site.register(Favorite)
+admin.site.register(Comment)
 
 @admin.register(Brand)
 class BrandAdmin(TranslationAdmin):

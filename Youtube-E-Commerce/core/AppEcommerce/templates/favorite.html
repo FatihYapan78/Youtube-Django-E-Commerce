@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{% load humanize %}
+
+
+
+
+{% block content %}
+<div class="container" style="padding: 150px 0;">
+    <div class="row">
+        <h1 class="text-center">FAVORİLERİM</h1>
+        <div class="col">
+            <div class="row">
+                
+                {% for product in favorites %}
+                <div class="col-4">
+                    <div class="card" style="width: 100%;">
+                        <img src="{{ product.product.image.url }}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">{{ product.product.brand }}</h5>
+                          <p class="card-text text-dark">{{ product.product.model }}</p>
+                          <p class="card-text text-dark">{{ product.product.price|intcomma }} TL</p>
+                          <div class="d-flex justify-content-between">
+                            <a href="{% url 'product-detail' product.product.id %}" class="btn btn-primary">Detaya Git</a>
+                            <form method="post">
+                                {% csrf_token %}
+                                <input type="hidden" value="{{ product.product.id }}" name="product_id">
+                                <button type="submit" class="btn btn-primary">Sepete Ekle</button>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                </div>
+                {% endfor %}
+                    
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+    

@@ -11,6 +11,7 @@ urlpatterns = [
     path("profil/", profil, name="profil"),
     path("category/", category, name="category"),
     path("basket/", basket, name="basket"),
+    path("favorite/", favorite, name="favorite"),
     path("product-detail/<int:product_id>", product_detail, name="product-detail"),
 
     # Authenticated

@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load i18n %}
-
+{% load humanize %}
 {% block content %}
   
 
@@ -135,24 +135,40 @@
               {% if product.gender.gender == "Kadın" or product.gender.gender == "Woman" %}
 
               <div class="swiper-slide">
-                <div class="product-card position-relative">
-                  <div class="image-holder">
-                    <img src="{{ product.image.url }}" alt="product-item" class="img-fluid">
-                  </div>
-                  <div class="cart-concern position-absolute">
-                    <div class="cart-button d-flex">
-                      <a href="#" class="btn btn-medium btn-black">{% trans 'Sepete Ekle' %}<svg class="cart-outline"><use xlink:href="#cart-outline"></use></svg></a>
+                <div class="card position-relative" style="width: 100%;">
+                  <img src="{{ product.image.url }}" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title">{{ product.brand }}</h5>
+                    <p class="card-text text-dark">{{ product.model }}</p>
+                    <p class="card-text text-dark">{{ product.price|intcomma }} TL</p>
+                    <div class="d-flex justify-content-between">
+                      <a href="{% url 'product-detail' product.id %}" class="btn btn-primary">Detaya Git</a>
+                      <form method="post">
+                          {% csrf_token %}
+                          <input type="hidden" value="{{ product.id }}" name="product_id">
+                          <button type="submit" class="position-absolute top-0 end-0" name="submit" value="btnfavori"><i class="
+                              
+                              
+                              {% if favori_products %}
+
+                                  {% for favori_product in favori_products %}
+                                      
+                                      {% if favori_product.product == product %}
+                                          fa-solid fa-heart
+                                      {% else %}
+                                          fa-regular fa-heart
+                                      {% endif %}
+                                          
+                                  {% endfor %}
+                              {% else %}
+                              fa-regular fa-heart
+                              {% endif %}
+                                  
+                                fs-5"></i></button>
+                          <button type="submit" class="btn btn-primary" name="submit" value="btnbasket">Sepete Ekle</button>
+                      </form>
                     </div>
                   </div>
-                  <div class="card-detail d-flex justify-content-between align-items-baseline flex-column pt-3">
-                    <h3 class="card-title text-uppercase">
-                      {{ product.brand }}
-                    </h3>
-                    <h6 class="card-title text-uppercase">
-                      <a href="#">{{ product.model }}</a>
-                    </h6>
-                  </div>
-                  <span class="item-price text-primary">{{ product.price }} TL</span>
                 </div>
               </div>
               {% endif %}
@@ -181,24 +197,40 @@
               
               {% if product.gender.gender == "Erkek" or product.gender.gender == "Man" %}
               <div class="swiper-slide">
-                <div class="product-card position-relative">
-                  <div class="image-holder">
-                    <img src="{{ product.image.url }}" alt="product-item" class="img-fluid">
-                  </div>
-                  <div class="cart-concern position-absolute">
-                    <div class="cart-button d-flex">
-                      <a href="#" class="btn btn-medium btn-black">{% trans 'Sepete Ekle' %}<svg class="cart-outline"><use xlink:href="#cart-outline"></use></svg></a>
+                <div class="card position-relative" style="width: 100%;">
+                  <img src="{{ product.image.url }}" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title">{{ product.brand }}</h5>
+                    <p class="card-text text-dark">{{ product.model }}</p>
+                    <p class="card-text text-dark">{{ product.price|intcomma }} TL</p>
+                    <div class="d-flex justify-content-between">
+                      <a href="{% url 'product-detail' product.id %}" class="btn btn-primary">Detaya Git</a>
+                      <form method="post">
+                          {% csrf_token %}
+                          <input type="hidden" value="{{ product.id }}" name="product_id">
+                          <button type="submit" class="position-absolute top-0 end-0" name="submit" value="btnfavori"><i class="
+                              
+                              
+                              {% if favori_products %}
+
+                                  {% for favori_product in favori_products %}
+                                      
+                                      {% if favori_product.product == product %}
+                                          fa-solid fa-heart
+                                      {% else %}
+                                          fa-regular fa-heart
+                                      {% endif %}
+                                          
+                                  {% endfor %}
+                              {% else %}
+                              fa-regular fa-heart
+                              {% endif %}
+                                  
+                                fs-5"></i></button>
+                          <button type="submit" class="btn btn-primary" name="submit" value="btnbasket">Sepete Ekle</button>
+                      </form>
                     </div>
                   </div>
-                  <div class="card-detail d-flex justify-content-between align-items-baseline flex-column pt-3">
-                    <h3 class="card-title text-uppercase">
-                      {{ product.brand }}
-                    </h3>
-                    <h6 class="card-title text-uppercase">
-                      <a href="#">{{ product.model }}</a>
-                    </h6>
-                  </div>
-                  <span class="item-price text-primary">{{ product.price }} TL</span>
                 </div>
               </div>
               {% endif %}
